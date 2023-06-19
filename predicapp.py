@@ -61,14 +61,12 @@ def predict_note_authentication(battery_power,fc,int_memory,mobile_wt,px_height,
 
 
 def main():
-    st.image('logo_url.png', width=200)
+    st.image('logo.png', width=1200)
     st.title("Classificador Telemoveis")
 
-    
-
     with st.sidebar:
-        st.header("Introduz Aqui os Detalhes")
-        battery_power = st.number_input("battery_power",1 )
+        st.image('header.png', width=200)
+        battery_power = st.number_input("Qual a autonomia?(em mAh))",1 )
         
         chooseBat = st.selectbox('Tem Camera Frontal?', ('Sim', 'Nao'))
         if chooseBat == 'Sim':
@@ -76,16 +74,18 @@ def main():
         else:
             fc = 0
 
-        int_memory = st.number_input("int_memory", 1) #importa
-        ram = st.number_input("Memoria Ram",1)
-        talk_time = st.number_input("Qual o talk time",1 )    
+        int_memory = st.number_input("Qual a capacidade de armazenamento? (em GB)", 1) #importa
+        ram = st.number_input("Quantidade de Memória RAM? (em GB)",1)
+        talk_time = st.number_input("Duração da bateria em funcionamento? (em h)",1 )    
         
         st.header("Caracteristicas Fisicas")
         
-        px_height = st.number_input("Altura de Ecran (em pixeis)") #importa
-        px_width = st.number_input("Largura de Ecran (em pixeis)")
-        mobile_wt = st.number_input("Mobile WT") #importa
+        px_height = st.number_input("Resolução-Altura de Ecran? (em pixeis)") #importa
+        px_width = st.number_input("Resolução-Largura (em pixeis)")
+        mobile_wt = st.number_input("QPeso? (em g)") #importa
         sc_w = st.number_input("Largura do Telemovel (em cm)")
+        
+        
     
     result=""
     
@@ -95,6 +95,7 @@ def main():
     
     if result == 0:
         st.success('O telemovel está na classe de Baixo Preço')
+        
     if result == 1:
         st.success('O telemovel está na classe de Preço Médio')
     if result == 2:
